@@ -38,15 +38,16 @@ function followNodes($path = []) {
 	$key = array_pop($key);
 
 	foreach($graph[$key] as $child) {
-		// we've already visited this small node on this traversal
-		if (isSmall($child) && in_array($child, $path) ) {
+		// found an end node, return
+		if (isEnd($child)) {
+			$endPath = array_merge($path, [$child]);
+			$unique = implode('', $endPath);
+			$validPaths[$unique] = $endPath;
 			continue;
 		}
 
-		// found an end node, return
-		if (isEnd($key)) {
-			$unique = implode('', $path);
-			$validPaths[$unique] = $path;
+		// we've already visited this small node on this traversal
+		if (isSmall($child) && in_array($child, $path)) {
 			continue;
 		}
 
