@@ -82,6 +82,7 @@ foreach($folds as $fold) {
 				$oldChar = $paper[$amount + $x][$y];
 				$newChar = $newPaper[$amount - $x][$y];
 
+				// we only need to overwrite the new value if it's not already a #
 				if ($newChar == '.') {
 					$newPaper[$amount - $x][$y] = $paper[$amount + $x][$y];
 				}
@@ -102,6 +103,7 @@ foreach($folds as $fold) {
 				$oldChar = $paper[$x][$amount + $y];
 				$newChar = $newPaper[$x][$amount - $y];
 
+				// we only need to overwrite the new value if it's not already a #
 				if ($newChar == '.') {
 					$newPaper[$x][$amount - $y] = $paper[$x][$amount + $y];
 				}

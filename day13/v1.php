@@ -75,30 +75,19 @@ foreach($folds as $fold) {
 			}
 		}
 
-		// printGrid($newPaper);
-
 		// from index 0 - 15
 		for($y=0; $y<$yLength; $y++) {
 			// from index 5-10?
 			for($x=1; $x<$xLength - $amount; $x++) {
-				// $newPaper[$x][$amount - $y] = $paper[$x][$y];
-
 				$oldChar = $paper[$amount + $x][$y];
 				$newChar = $newPaper[$amount - $x][$y];
 
+				// we only need to overwrite the new value if it's not already a #
 				if ($newChar == '.') {
 					$newPaper[$amount - $x][$y] = $paper[$amount + $x][$y];
 				}
-				// echo $newPaper[$x][$amount - $y];
-				// echo $paper[$x][$amount + $y];
 			}
-			// echo PHP_EOL;
 		}
-
-		// printGrid($newPaper);
-		// die();
-
-
 	} else if ($dir == 'y') {
 		//first part is normal
 		for($y=0; $y<$amount; $y++) {
@@ -107,28 +96,19 @@ foreach($folds as $fold) {
 			}
 		}
 
-		// printGrid($newPaper);
-
 		// from index 1-8?
 		for($y=1; $y<$yLength - $amount; $y++) {
 			// from index 0 - 11
 			for($x=0; $x<$xLength; $x++) {
-				// $newPaper[$x][$amount - $y] = $paper[$x][$y];
-
 				$oldChar = $paper[$x][$amount + $y];
 				$newChar = $newPaper[$x][$amount - $y];
 
+				// we only need to overwrite the new value if it's not already a #
 				if ($newChar == '.') {
 					$newPaper[$x][$amount - $y] = $paper[$x][$amount + $y];
 				}
-				// echo $newPaper[$x][$amount - $y];
-				// echo $paper[$x][$amount + $y];
 			}
-			// echo PHP_EOL;
 		}
-
-		// printGrid($newPaper);
-		// die();
 	}
 
 	$paper = $newPaper;
@@ -140,15 +120,6 @@ foreach($folds as $fold) {
 	if ($foldNum == 1) {
 		die();
 	}
-
-	// printGrid($newPaper);
-	// die();
-
-	// echo '<pre>';
-	// var_dump($dir);
-	// var_dump($amount);
-	// echo '</pre>';
-	// die();
 }
 
 printGrid($paper);
